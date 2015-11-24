@@ -10,17 +10,58 @@ $ gem install norikra-querydump-format
 
 ## Usage
 
-Format as text norikra query dump.
+Format norikra query dump as a text.
 
 ```
 $ norikra-client query dump | norikra-querydump-format -i json > dump.txt
 ```
 
-Import queries from dump.txt to norikra.
+Sync queries from a text to norikra.
 
 ```
 $ norikra-querydump-format -i text < dump.txt | norikra-client query sync
 ```
+
+## Examples
+
+An example output of `norikra-client query dump`.
+
+```json
+[
+  {
+    "name": "query1",
+    "group": null,
+    "suspended": false,
+    "targets": [
+      "foo"
+    ],
+    "expression": "SELECT count(*) FROM\n  foo.win:time_batch(1 min)\n"
+  },
+  {
+    "name": "query2",
+    "group": null,
+    "suspended": false,
+    "targets": [
+      "bar"
+    ],
+    "expression": "SELECT count(*) FROM bar.win:time_batch(1 min)\n"
+  }
+]
+```
+
+`-i json` converts a json to text below.
+
+```sql
+-- QUERY:{"name":"query1","group":null,"suspended":false,"targets":["foo"]}
+SELECT count(*) FROM
+  foo.win:time_batch(1 min)
+
+-- QUERY:{"name":"query2","group":null,"suspended":false,"targets":["bar"]}
+SELECT count(*) FROM bar.win:time_batch(1 min)
+
+```
+
+`-i text` converts a text to json.
 
 ## Development
 
