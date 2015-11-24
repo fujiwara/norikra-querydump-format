@@ -4,11 +4,17 @@ require 'optparse'
 require 'norikra/querydump/format'
 
 params = ARGV.getopts('i:')
+if ARGV.size == 1
+  src = File.open(ARGV.first)
+else
+  src = STDIN
+end
+
 case params['i']
 when 'text'
-  Norikra::Querydump::Format.text2json
+  Norikra::Querydump::Format.text2json(src)
 when 'json'
-  Norikra::Querydump::Format.json2text
+  Norikra::Querydump::Format.json2text(src)
 else
   warn "invalid option -i #{params['i']}: use text or json"
   exit 1
