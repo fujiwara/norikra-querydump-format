@@ -1,0 +1,15 @@
+#!/usr/bin/ruby
+
+require 'optparse'
+require 'norikra/querydump/format'
+
+params = ARGV.getopts('i:')
+case params['i']
+when 'text'
+  Norikra::Querydump::Format.text2json
+when 'json'
+  Norikra::Querydump::Format.json2text
+else
+  warn "invalid option -i #{params['i']}: use text or json"
+  exit 1
+end

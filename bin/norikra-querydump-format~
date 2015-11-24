@@ -1,0 +1,12 @@
+#!/usr/bin/ruby
+
+params = ARGV.getopts('i:')
+case params['i']
+when 'text'
+  text2json
+when 'json'
+  json2text
+else
+  warn "invalid option -i #{params['i']}: use text or json"
+  exit 1
+end
