@@ -1,10 +1,12 @@
 # Norikra::Querydump::Format
 
-Formatter for norikra-client query dump and sync.
+A formatter for norikra-client query dump and sync.
 
 ## Installation
 
+```
 $ gem install norikra-querydump-format
+```
 
 ## Usage
 
@@ -14,7 +16,7 @@ Format as text norikra query dump.
 $ norikra-client query dump | norikra-querydump-format -i json > dump.txt
 ```
 
-Format as json from dump text.
+Import queries from dump.txt to norikra.
 
 ```
 $ norikra-querydump-format -i text < dump.txt | norikra-client query sync
