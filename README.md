@@ -10,6 +10,10 @@ $ gem install norikra-querydump-format
 
 ## Usage
 
+```
+$ norikra-querydump-format -i (text|json) [inputfile]
+```
+
 Format norikra query dump as a text.
 
 ```
